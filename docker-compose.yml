@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: taskdb
+      MYSQL_USER: taskuser
+      MYSQL_PASSWORD: taskpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./backend/seed.sql:/docker-entrypoint-initdb.d/seed.sql:ro
+
+volumes:
+  db_data:
+
+
+
+
+

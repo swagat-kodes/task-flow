@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Manager</title>
+  <link rel="icon" type="image/png" href="../task.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Task Manager</h1>
+    <button id="btn-open-modal" class="btn btn-primary">+ Add Task</button>
+  </header>
+
+  <section class="controls">
+    <div class="filters">
+      <button data-filter="all" class="chip chip-active">All</button>
+      <button data-filter="pending" class="chip">Pending</button>
+      <button data-filter="completed" class="chip">Completed</button>
+    </div>
+    <div class="sort">
+      <label for="sort-select">Sort by</label>
+      <select id="sort-select">
+        <option value="created">Created</option>
+        <option value="due">Due Date</option>
+        <option value="priority">Priority</option>
+      </select>
+      <select id="direction-select">
+        <option value="asc">Asc</option>
+        <option value="desc">Desc</option>
+      </select>
+    </div>
+  </section>
+
+  <main>
+    <ul id="task-list" class="task-list"></ul>
+  </main>
+
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Add Task</h2>
+        <button id="btn-close-modal" class="icon-btn" aria-label="Close">&times;</button>
+      </div>
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <div class="form-row">
+          <label for="title">Title<span class="req">*</span></label>
+          <input id="title" name="title" type="text" required maxlength="255" placeholder="e.g., Buy groceries" />
+          <div class="error" id="err-title"></div>
+        </div>
+        <div class="form-row">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="3" placeholder="Optional details..."></textarea>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="due_date">Due Date</label>
+            <input id="due_date" name="due_date" type="date" />
+            <div class="error" id="err-due"></div>
+          </div>
+          <div>
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+            <div class="error" id="err-priority"></div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="btn-save">Save</button>
+          <button type="button" class="btn" id="btn-cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <template id="task-item-template">
+    <li class="task-card">
+      <div class="task-main">
+        <input type="checkbox" class="task-complete" />
+        <div class="task-info">
+          <div class="task-title"></div>
+          <div class="task-desc"></div>
+          <div class="badges">
+            <span class="badge badge-priority"></span>
+            <span class="badge badge-due"></span>
+          </div>
+        </div>
+      </div>
+      <div class="task-actions">
+        <button class="icon-btn edit" title="Edit" aria-label="Edit">✎</button>
+        <button class="icon-btn delete" title="Delete" aria-label="Delete">🗑</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

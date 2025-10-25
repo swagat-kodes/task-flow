@@ -1,0 +1,81 @@
+:root {
+  --pal-1: #ccd5ae; /* soft green — primary accent */
+  --pal-2: #e9edc9; /* pale background */
+  --pal-3: #fefae0; /* light cream */
+  --pal-4: #faedcd; /* warm highlight */
+  --pal-5: #d4a373; /* terracotta accent for CTA / priority high */
+  --text-primary: #2b2b2b;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text-primary);
+  background: var(--pal-2);
+}
+
+.app-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; background: var(--pal-3); border-bottom: 1px solid #e0e0e0;
+  position: sticky; top: 0; z-index: 10;
+}
+.app-header h1 { margin: 0; font-size: 1.4rem; }
+
+.controls { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 20px; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.sort { display: flex; gap: 8px; align-items: center; }
+
+.chip { border: 1px solid var(--pal-1); background: white; color: var(--text-primary); padding: 6px 10px; border-radius: 16px; cursor: pointer; }
+.chip-active { background: var(--pal-1); }
+
+.btn { background: #fff; border: 1px solid #ccc; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+.btn:hover { background: var(--pal-4); }
+.btn-primary { background: var(--pal-1); border-color: var(--pal-1); }
+.btn-primary:hover { filter: brightness(0.95); }
+.icon-btn { background: transparent; border: none; cursor: pointer; font-size: 18px; }
+
+main { padding: 10px 20px; }
+.task-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+
+.task-card { background: var(--pal-3); border: 1px solid #e5e2d6; border-radius: 12px; padding: 12px; display: flex; justify-content: space-between; align-items: start; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform .1s ease, box-shadow .2s ease; }
+.task-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+.task-main { display: flex; gap: 10px; align-items: start; }
+.task-info { display: grid; gap: 6px; }
+.task-title { font-weight: 600; }
+.task-desc { font-size: 0.9rem; color: #555; max-width: 40ch; }
+
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { font-size: 0.75rem; padding: 3px 8px; border-radius: 999px; background: var(--pal-4); border: 1px solid #edd9b2; }
+.badge-priority[data-priority="high"] { background: var(--pal-5); color: white; border-color: var(--pal-5); }
+.badge-priority[data-priority="medium"] { background: var(--pal-1); }
+.badge-priority[data-priority="low"] { background: #dfe8c7; }
+
+.task-actions { display: flex; gap: 6px; }
+.task-card.completed { opacity: 0.65; }
+.task-card.completed .task-title { text-decoration: line-through; }
+
+.modal { position: fixed; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,0.3); }
+.modal.hidden { display: none; }
+.modal-content { width: min(560px, 92vw); background: var(--pal-3); border-radius: 12px; border: 1px solid #e5e2d6; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eee; }
+
+form { padding: 16px; display: grid; gap: 12px; }
+.form-row { display: grid; gap: 6px; }
+.two-col { grid-template-columns: 1fr 1fr; gap: 12px; }
+label .req { color: #b00020; margin-left: 4px; }
+input[type="text"], textarea, select, input[type="date"] { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; background: white; color: var(--text-primary); }
+.error { color: #b00020; font-size: 0.8rem; min-height: 1em; }
+.form-actions { display: flex; gap: 8px; justify-content: end; }
+
+@media (max-width: 640px) {
+  .controls { flex-direction: column; align-items: stretch; }
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* Subtle animations */
+.task-card { animation: pop-in .12s ease-out; }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
