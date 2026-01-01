@@ -1,0 +1,230 @@
+.task-manager {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-medium) 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-medium);
+  background: white;
+  color: var(--color-dark);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.chip:hover {
+  background: var(--color-light);
+  border-color: var(--color-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chip-active {
+  background: var(--color-medium);
+  color: white;
+  border-color: var(--color-medium);
+}
+
+.sort {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sort label {
+  font-weight: 500;
+  color: var(--color-dark);
+  font-size: 0.9rem;
+}
+
+.sort select {
+  padding: 0.5rem;
+  border: 2px solid var(--color-medium);
+  border-radius: 8px;
+  background: white;
+  color: var(--color-dark);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort select:hover {
+  border-color: var(--color-light);
+  background: var(--color-bg);
+}
+
+.sort select:focus {
+  outline: none;
+  border-color: var(--color-medium);
+  box-shadow: 0 0 0 3px rgba(88, 111, 124, 0.1);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(42, 123, 155, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.main-content {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-medium);
+  font-size: 1.1rem;
+}
+
+.error-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-dark);
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-state h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-dark);
+}
+
+.error-state p {
+  font-size: 1rem;
+  color: var(--color-medium);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: pre-line;
+  text-align: left;
+  background: var(--color-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--color-medium);
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem 1.5rem;
+  }
+
+  .filters {
+    justify-content: center;
+  }
+
+  .sort {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}
+
